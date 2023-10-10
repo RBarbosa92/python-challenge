@@ -3,16 +3,15 @@ import csv
 
 election_data = os.path.join("election_data.csv")
 
-# A list to capture the names of candidates
 candidates = []
 
-# A list to capture the number of votes each candidate receives
+
 num_votes = []
 
-# A list to capture the percentage of total votes each candidate garners 
+
 percent_votes = []
 
-# A counter for the total number of votes 
+
 total_votes = 0
 
 with open(election_data, newline = "") as csvfile:
@@ -20,7 +19,7 @@ with open(election_data, newline = "") as csvfile:
     csv_header = next(csvreader)
 
     for row in csvreader:
-        # Add to our vote-counter 
+        
         total_votes += 1 
 
         '''
@@ -37,19 +36,19 @@ with open(election_data, newline = "") as csvfile:
             index = candidates.index(row[2])
             num_votes[index] += 1
     
-    # Add to percent_votes list 
+    
     for votes in num_votes:
         percentage = (votes/total_votes) * 100
         percentage = round(percentage)
         percentage = "%.3f%%" % percentage
         percent_votes.append(percentage)
     
-    # Find the winning candidate
+    
     winner = max(num_votes)
     index = num_votes.index(winner)
     winning_candidate = candidates[index]
 
-# Displaying results
+
 print("Election Results")
 print("--------------------------")
 print(f"Total Votes: {str(total_votes)}")
@@ -60,7 +59,7 @@ print("--------------------------")
 print(f"Winner: {winning_candidate}")
 print("--------------------------")
 
-# Exporting to .txt file
+
 output = open("output.txt", "w")
 line1 = "Election Results"
 line2 = "--------------------------"
